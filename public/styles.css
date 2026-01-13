@@ -1,0 +1,247 @@
+:root {
+  --bg: #f9fafb;
+  --primary: #1b76ff;
+  --red: #f04438;
+  --yellow: #f79009;
+  --green: #12b76a;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #ffffffcc;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI", sans-serif;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+}
+
+#locate-btn {
+  position: absolute;
+  right: 1rem;
+  bottom: 7rem;
+  z-index: 1100;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  color: var(--text);
+}
+
+#top-bar {
+  position: absolute;
+  top: 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(680px, calc(100% - 2rem));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.85rem;
+  background: var(--card);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+}
+
+#top-bar button {
+  border: none;
+  background: #eef2ff;
+  color: var(--text);
+  padding: 0.45rem 0.7rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+#top-bar .title {
+  font-weight: 700;
+  color: var(--text);
+}
+
+#indicator {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 950;
+}
+
+#indicator .label {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+#indicator .circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  display: grid;
+  place-items: center;
+}
+
+#indicator .circle .dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+#indicator .status-text {
+  font-weight: 700;
+  color: var(--text);
+}
+
+#toast {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(17, 24, 39, 0.85);
+  color: #fff;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1050;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#bottom-sheet {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 100%);
+  background: #fff;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.15);
+  padding: 0.75rem 1rem 1.25rem;
+  z-index: 1000;
+}
+
+#bottom-sheet .handle {
+  width: 50px;
+  height: 5px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  margin: 0 auto 0.75rem;
+}
+
+#bottom-sheet .inputs {
+  display: grid;
+  gap: 0.5rem;
+}
+
+#bottom-sheet .field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  background: #f3f4f6;
+  border-radius: 12px;
+}
+
+#bottom-sheet .field span {
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 42px;
+}
+
+#bottom-sheet input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+}
+
+#route-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+#bottom-sheet .summary {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  margin: 0.8rem 0 0.3rem;
+}
+
+#bottom-sheet .summary .dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+#bottom-sheet .summary .title {
+  font-weight: 700;
+  color: var(--text);
+}
+
+#bottom-sheet .summary .desc {
+  color: var(--muted);
+}
+
+#bottom-sheet .actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+#bottom-sheet .actions .secondary {
+  flex: 1;
+  padding: 0.65rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  #indicator {
+    width: calc(100% - 1.5rem);
+    justify-content: space-between;
+  }
+  #top-bar {
+    width: calc(100% - 1.5rem);
+  }
+}
